@@ -1,30 +1,29 @@
-import { Button, Center } from "@chakra-ui/react";
+import { Center } from "@chakra-ui/react";
 import { Box, Image } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Styles from "../styles/common.module.css";
 import { Card } from "../components/Card/Card.jsx";
 import { Pagination } from "../components/Pagination";
+import { useToast } from "@chakra-ui/react";
+
 export default function Home() {
   const [data, setdata] = useState([]);
   const [page, setPage] = useState(1);
+  const [iserror, setiserror] = useState(false);
   const [totalpage, settotalpage] = useState(0);
   const [loading, setloading] = useState(false);
+  const toast = useToast();
   let fetchAll = async () => {
     try {
       setloading(true);
-      let res = await fetch(
-        `https://api.ratecity.com.au/v2/home-loans?page=${page}&pageSize=6`,
-        {
-          headers: {
-            "x-api-key": "MaDX2Oo31g3FLAHesYHtGa3rHe40uqkJ8TmbPJn9"
-          }
-        }
-      );
+      let res = await fetch(`/api/app?page=${page}&pageSize=6`);
       let res2 = await res.json();
-      setdata(res2.hits);
-      settotalpage(res2.meta.totalCount);
+      setdata(res2.data.hits);
+      settotalpage(res2.data.meta.totalCount);
       setloading(false);
-    } catch (error) {}
+    } catch (error) {
+      setiserror(true);
+    }
   };
   useEffect(() => {
     fetchAll();
@@ -36,6 +35,16 @@ export default function Home() {
         <Image src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"></Image>
       </Center>
     );
+  }
+  if (iserror) {
+    return toast({
+      title: "Error",
+      description: "Something went wrong",
+      status: "error",
+      duration: 7000,
+      position: "top",
+      isClosable: true
+    });
   }
   return (
     <Box className={Styles.Container}>
@@ -54,7 +63,7 @@ export default function Home() {
           }) => {
             return (
               <Card
-                key={uuid + Date.now() + id}
+                key={uuid}
                 gotoSiteUrl={gotoSiteUrl}
                 name={name}
                 pros={pros}

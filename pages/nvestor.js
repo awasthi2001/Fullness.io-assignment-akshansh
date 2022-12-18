@@ -1,31 +1,28 @@
-import { Box, Center, Image } from "@chakra-ui/react";
+import { Box, Center, Image, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Card } from "../components/Card/Card";
 import { Pagination } from "../components/Pagination";
 import { v4 as uuidv4 } from "uuid";
 import Styles from "../styles/common.module.css";
 
-const Navester = () => {
+const Nvestor = () => {
   const [data, setdata] = useState([]);
-  const [loading, setloading] = useState(false);
   const [page, setPage] = useState(1);
+  const [iserror, setiserror] = useState(false);
   const [totalpage, settotalpage] = useState(0);
+  const [loading, setloading] = useState(false);
+  const toast = useToast();
   let fetchApi = async () => {
     try {
       setloading(true);
-      let res = await fetch(
-        `https://api.ratecity.com.au/v2/home-loans?page=${page}&pageSize=6`,
-        {
-          headers: {
-            "x-api-key": "MaDX2Oo31g3FLAHesYHtGa3rHe40uqkJ8TmbPJn9"
-          }
-        }
-      );
+      let res = await fetch(`/api/app?page=${page}&pageSize=6`);
       let res2 = await res.json();
-      setdata(res2.hits);
-      settotalpage(res2.meta.totalCount);
+      setdata(res2.data.hits);
+      settotalpage(res2.data.meta.totalCount);
       setloading(false);
-    } catch (error) {}
+    } catch (error) {
+      setiserror(true);
+    }
   };
   useEffect(() => {
     fetchApi();
@@ -37,6 +34,16 @@ const Navester = () => {
         <Image src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"></Image>
       </Center>
     );
+  }
+  if (iserror) {
+    return toast({
+      title: "Error",
+      description: "Something went wrong",
+      status: "error",
+      duration: 7000,
+      position: "top",
+      isClosable: true
+    });
   }
   return (
     <Box className={Styles.Container}>
@@ -71,4 +78,4 @@ const Navester = () => {
     </Box>
   );
 };
-export default Navester;
+export default Nvestor;

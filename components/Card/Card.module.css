@@ -14,7 +14,6 @@
   place-content: center;
 }
 .hr {
-  /* border: 0.1px solid; */
   height: 0px;
 }
 
@@ -66,11 +65,11 @@
   font-size: 18px;
   text-decoration: none;
   border-bottom: 2px solid #374968;
+  cursor: pointer;
 }
 /*Checkbox related css completed */
 
 /*Favicon and button related css*/
-
 .FaviconContainer {
   display: flex;
   justify-content: space-around;
@@ -80,5 +79,4 @@
   bottom: 0;
   height: 60px;
 }
-
 /*Favicon and button related css end*/
