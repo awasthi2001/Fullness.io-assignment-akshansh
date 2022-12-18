@@ -16,7 +16,6 @@ const FirstBuyer = () => {
       setloading(true);
       let res = await fetch(`/api/app?page=${page}&pageSize=6`);
       let res2 = await res.json();
-      console.log(res2.data.hits);
       setdata(res2.data.hits);
       settotalpage(res2.data.meta.totalCount);
       setloading(false);
