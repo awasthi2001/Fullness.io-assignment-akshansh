@@ -1,0 +1,14 @@
+.Container {
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.ChildContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+@media screen (min-width: 320px) and (max-width: 720) {
+}

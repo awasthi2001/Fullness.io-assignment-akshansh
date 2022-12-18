@@ -1,0 +1,84 @@
+.Container {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 320px;
+  position: relative;
+}
+
+.name {
+  color: #2d2c2c;
+  font-weight: 500;
+  padding: 10px;
+  margin: auto;
+  height: 80px;
+  display: grid;
+  place-content: center;
+}
+.hr {
+  /* border: 0.1px solid; */
+  height: 0px;
+}
+
+/*Advertise Rate and Comparision Rate related css*/
+
+.rateContainer {
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+.Rate {
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
+}
+.rateType {
+  color: #575757;
+}
+/*Advertise Rate and Comparision Rate related css*/
+
+/*Pros related css*/
+
+.pros {
+  margin-bottom: 140px;
+  color: #575757;
+  padding: 15px;
+}
+
+/*Pros related css completed*/
+
+/*Checkbox related css */
+
+.CheckBoxContainer {
+  padding: 10px 0px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #9a9a9a;
+  border-bottom: 1px solid #9a9a9a;
+  position: absolute;
+  width: 100%;
+  bottom: 80px;
+}
+
+.spanText {
+  font-size: 18px;
+}
+.LinkMore {
+  font-size: 18px;
+  text-decoration: none;
+  border-bottom: 2px solid #374968;
+}
+/*Checkbox related css completed */
+
+/*Favicon and button related css*/
+
+.FaviconContainer {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 60px;
+}
+
+/*Favicon and button related css end*/

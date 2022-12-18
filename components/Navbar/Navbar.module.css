@@ -1,0 +1,14 @@
+.NavContainer {
+  margin: 0;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 0.1px solid rgb(233, 220, 220);
+}
+
+.Navchild2 {
+  display: flex;
+  justify-content: space-around;
+  width: 55%;
+}
