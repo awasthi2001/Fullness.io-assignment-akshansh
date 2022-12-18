@@ -9,7 +9,7 @@ const NextBuyer = () => {
   const [loading, setloading] = useState(false);
   const [page, setPage] = useState(1);
   const [totalpage, settotalpage] = useState(0);
-  let fetchAll = async () => {
+  let fetchApi = async () => {
     try {
       setloading(true);
       let res = await fetch(
@@ -27,7 +27,7 @@ const NextBuyer = () => {
     } catch (error) {}
   };
   useEffect(() => {
-    fetchAll();
+    fetchApi();
   }, [page]);
 
   if (loading) {
